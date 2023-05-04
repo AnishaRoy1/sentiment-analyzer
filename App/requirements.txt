@@ -7,4 +7,3 @@ datetime
 joblib
 sklearn
 scikit-learn 
-PIL
