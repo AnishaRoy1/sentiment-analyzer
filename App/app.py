@@ -12,6 +12,8 @@ from datetime import datetime
 import joblib 
 pipe_lr = joblib.load(open("models/emotion_classifier_pipe_lr_03_may_2023.pkl","rb"))
 
+# For images
+from PIL import Image
 
 # Track Utils
 from track_utils import create_page_visited_table,add_page_visited_details,view_all_page_visited_details,add_prediction_details,view_all_prediction_details,create_emotionclf_table
@@ -30,6 +32,16 @@ emotions_emoji_dict = {"anger":"😠","disgust":"🤮", "fear":"😨😱", "happ
 
 # Main Application
 def main():
+	st.markdown(
+    """
+    <style>
+        div [data-testid=stImage]{
+            margin-bottom: 50px;
+        }
+    </style>
+    """, unsafe_allow_html=True
+    )
+	
 	st.title("Sentiment Analyzer App")
 	menu = ["Home","Monitor","About"]
 	choice = st.sidebar.selectbox("Menu",menu)
@@ -104,10 +116,10 @@ def main():
 	else:
 		st.subheader("About")
 		add_page_visited_details("About",datetime.now())
-		st.write("Understanding emotions is one of the most important aspects of personal development and growth and, as such, it is a key tool for the emulation of human intelligence. Besides being important for the advancement of AI, emotion processing is also important for the closely related task of polarity detection. The opportunity to automatically capture the sentiments of the general public about social events, political movements, marketing campaigns, and product preferences, in fact, has raised increasing interest both in the scientific community, for the exciting open challenges, and in the business world, for the remarkable fallouts in marketing and financial market prediction. This has led to the emerging fields of affective computing and sentiment analysis, which leverage on human-computer interaction, information retrieval, and multimodal signal processing for distilling people’s sentiments from the ever-growing amount of online social data. Sentiment analysis is a field of study that involves using machine learning techniques to extract subjective information from text data. In this project, we aim to analyze the sentiment of textual data such as customer reviews, social media posts, and news articles, in order to gain insights into people's opinions, attitudes, and emotions towards a particular topic. By leveraging the power of machine learning algorithms, we can automatically classify text as positive, negative, or neutral, and identify the key factors that influence people's sentiment. This project has numerous applications in various fields such as marketing, politics, and healthcare. The main goal of this project is to develop a robust and accurate sentiment analysis model that can classify textual data into different categories based on the emotional content expressed in the text. Sentiment analysis is a powerful tool to gain insights into people's opinions, attitudes, and emotions towards a particular topic.")
-
-
-
+		img = Image.open('image/senti.png')
+		# img = img.resize((450,450))
+		st.image(img)
+		st.write("Understanding emotions is one of the most important aspects of personal development and growth and, as such, it is a key tool for the emulation of human intelligence. The main goal of this project is to develop a robust and accurate sentiment analysis model that can classify textual data into different categories based on the emotional content expressed in the text. Sentiment analysis is a powerful tool to gain insights into people's opinions, attitudes, and emotions towards a particular topic.")
 
 
 if __name__ == '__main__':
