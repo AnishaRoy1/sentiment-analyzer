@@ -32,15 +32,15 @@ emotions_emoji_dict = {"anger":"😠","disgust":"🤮", "fear":"😨😱", "happ
 
 # Main Application
 def main():
-	# st.markdown(
-    # """
-    # <style>
-    #     div [data-testid=stImage]{
-    #         margin-bottom: 50px;
-    #     }
-    # </style>
-    # """, unsafe_allow_html=True
-    # )
+	st.markdown(
+    """
+    <style>
+        div [data-testid=stImage]{
+            margin-bottom: 50px;
+        }
+    </style>
+    """, unsafe_allow_html=True
+    )
 	
 	st.title("Sentiment Analyzer App")
 	menu = ["Home","Monitor","About"]
@@ -116,9 +116,9 @@ def main():
 	else:
 		st.subheader("About")
 		add_page_visited_details("About",datetime.now())
-		# img = Image.open('/image/senti.png')
+		img = Image.open('/image/senti.png')
 		# img = img.resize((450,450))
-		# st.image(img)
+		st.image(img)
 		st.write("Understanding emotions is one of the most important aspects of personal development and growth and, as such, it is a key tool for the emulation of human intelligence. The main goal of this project is to develop a robust and accurate sentiment analysis model that can classify textual data into different categories based on the emotional content expressed in the text. Sentiment analysis is a powerful tool to gain insights into people's opinions, attitudes, and emotions towards a particular topic.")
 
 
